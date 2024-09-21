@@ -1,0 +1,734 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\*\generator Riched20 10.0.22621}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang9 #!/usr/bin/env python3\par
+# -*- coding: utf-8 -*-\par
+"""\par
+Created on Tue Feb 21 16:27:47 2023\par
+\par
+@author: Prabodh C P\par
+"""\par
+\par
+m1 = int(input("Enter marks for test1 : "))\par
+m2 = int(input("Enter marks for test2 : "))\par
+m3 = int(input("Enter marks for test3 : "))\par
+\par
+if m1 <= m2 and m1 <= m3:\par
+    avgMarks = (m2+m3)/2\par
+elif m2 <= m1 and m2 <= m3:\par
+    avgMarks = (m1+m3)/2\par
+elif m3 <= m1 and m2 <= m2:\par
+    avgMarks = (m1+m2)/2    \par
+    \par
+print("Average of best two test marks  out of three test\rquote s marks is", avgMarks);\par
+Output\par
+Enter marks for test1 : 45\par
+Enter marks for test2 : 39\par
+Enter marks for test3 : 48\par
+Average of best two test marks  out of three test\rquote s marks is 46.5\par
+Palindrome Check & Digit Occurrence Count\par
+Develop a Python program to check whether a given number is palindrome or not and also count the number of occurrences of each digit in the input number.\par
+\par
+Python Code\par
+#!/usr/bin/env python3\par
+# -*- coding: utf-8 -*-\par
+"""\par
+Created on Tue Feb 21 16:35:54 2023\par
+\par
+@author: Prabodh C P\par
+"""\par
+\par
+val = int(input("Enter a value : "))\par
+str_val = str(val)\par
+if str_val == str_val[::-1]:\par
+    print("Palindrome")\par
+else:\par
+    print("Not Palindrome")\par
+    \par
+for i in range(10):\par
+    if str_val.count(str(i)) > 0:\par
+        print(str(i),"appears", str_val.count(str(i)), "times");\par
+Output\par
+Enter a value : 1234234\par
+Not Palindrome\par
+1 appears 1 times\par
+2 appears 2 times\par
+3 appears 2 times\par
+4 appears 2 times\par
+Enter a value : 12321\par
+Palindrome\par
+1 appears 2 times\par
+2 appears 2 times\par
+3 appears 1 times\par
+Question 2\par
+Fibonacci Sequence\par
+Defined as a function F as Fn = Fn-1 + Fn-2. Write a Python program which accepts a value for N (where N >0) as input and pass this value to the function. Display suitable error message if the condition for input value is not followed.\par
+\par
+Python Code\par
+#!/usr/bin/env python3\par
+# -*- coding: utf-8 -*-\par
+"""\par
+Created on Tue Feb 21 16:46:55 2023\par
+\par
+@author: Prabodh C P\par
+"""\par
+\par
+def fn(n):\par
+    if n == 1:\par
+        return 0\par
+    elif n == 2:\par
+        return 1\par
+    else:\par
+        return fn(n-1) + fn(n-2)\par
+    \par
+\par
+num = int(input("Enter a number : "))\par
+\par
+if num > 0:\par
+    print("fn(", num, ") = ",fn(num) , sep ="")\par
+else:\par
+    print("Error in input")\par
+Output\par
+Enter a number : 5\par
+fn(5) = 3\par
+Enter a number : -1\par
+Error in input\par
+Binary to Decimal & Octal to Hexadecimal Conversion\par
+Develop a python program to convert binary to decimal, octal to hexadecimal using functions.\par
+\par
+Python Code\par
+#!/usr/bin/env python3\par
+# -*- coding: utf-8 -*-\par
+"""\par
+Created on Tue Feb 21 20:57:52 2023\par
+\par
+@author: Prabodh C P\par
+"""\par
+\par
+def bin2Dec(val):\par
+    rev=val[::-1]\par
+    dec = 0\par
+    i = 0\par
+    for dig in rev:\par
+        dec += int(dig) * 2**i\par
+        i += 1\par
+    \par
+    return dec\par
+\par
+def oct2Hex(val):\par
+    rev=val[::-1]\par
+    dec = 0\par
+    i = 0\par
+    for dig in rev:\par
+        dec += int(dig) * 8**i\par
+        i += 1\par
+    list=[]\par
+    while dec != 0:\par
+        list.append(dec%16)\par
+        dec = dec // 16\par
+        \par
+    nl=[]\par
+    for elem in list[::-1]:\par
+        if elem <= 9:\par
+            nl.append(str(elem))\par
+        else:\par
+            nl.append(chr(ord('A') + (elem -10)))\par
+    hex = "".join(nl)\par
+    \par
+    return hex\par
+\par
+num1 = input("Enter a binary number : ")    \par
+print(bin2Dec(num1))\par
+num2 = input("Enter a octal number : ")\par
+print(oct2Hex(num2))\par
+Output\par
+Enter a binary number : 10111001\par
+185\par
+Enter a octal number : 675\par
+1BD\par
+Question 3\par
+Sentence Statistics\par
+Write a Python program that accepts a sentence and find the number of words, digits, uppercase letters and lowercase letters.\par
+\par
+Python Code\par
+#!/usr/bin/env python3\par
+# -*- coding: utf-8 -*-\par
+"""\par
+Created on Wed Feb 22 01:37:07 2023\par
+\par
+@author: Prabodh C P\par
+"""\par
+\par
+sentence = input("Enter a sentence : ")\par
+\par
+wordList = sentence.split(" ")\par
+print("This sentence has", len(wordList), "words")\par
+\par
+digCnt = upCnt = loCnt = 0\par
+\par
+for ch in sentence:\par
+    if '0' <= ch <= '9':\par
+        digCnt += 1\par
+    elif 'A' <= ch <= 'Z':\par
+        upCnt += 1\par
+    elif 'a' <= ch <= 'z':\par
+        loCnt += 1\par
+\par
+print("This sentence has", digCnt, "digits", upCnt, "upper case letters", loCnt, "lower case letters")\par
+Output\par
+Enter a sentence : Rama went to Devaraja market to pick 2 kgs of vegetable\par
+This sentence has 11 words\par
+This sentence has 1 digits 2 upper case letters 42 lower case letters\par
+String Similarity\par
+Write a Python program to find the string similarity between two given strings.\par
+\par
+Python Code\par
+#!/usr/bin/env python3\par
+# -*- coding: utf-8 -*-\par
+"""\par
+Created on Wed Feb 22 01:48:17 2023\par
+\par
+@author: Prabodh C P\par
+"""\par
+\par
+str1 = input("Enter String 1 \\n")\par
+str2 = input("Enter String 2 \\n")\par
+\par
+if len(str2) < len(str1):\par
+    short = len(str2)\par
+    long = len(str1)\par
+else:\par
+    short = len(str1)\par
+    long = len(str2)\par
+    \par
+\par
+matchCnt = 0\par
+for i in range(short):\par
+    if str1[i] == str2[i]:\par
+        matchCnt += 1\par
+\par
+print("Similarity between two said strings:")\par
+print(matchCnt/long)\par
+Output\par
+Enter String 1 \par
+Python Exercises\par
+Enter String 2 \par
+Python Exercises\par
+Similarity between two said strings:\par
+1.0\par
+Enter String 1 \par
+Python Exercises\par
+Enter String 2 \par
+Python Exercise\par
+Similarity between two said strings:\par
+0.9375\par
+Question 4\par
+Insertion Sort & Merge Sort on lists\par
+Write a python program to implement insertion sort and merge sort using lists.\par
+\par
+Python Code\par
+#!/usr/bin/env python3\par
+# -*- coding: utf-8 -*-\par
+"""\par
+Created on Thu Mar  9 04:06:09 2023\par
+\par
+@author: Prabodh C P\par
+"""\par
+\par
+import random\par
+\par
+def merge_sort(lst):\par
+    if len(lst) > 1:\par
+        mid = len(lst) // 2\par
+        left_half = lst[:mid]\par
+        right_half = lst[mid:]\par
+\par
+        merge_sort(left_half)\par
+        merge_sort(right_half)\par
+\par
+        i = j = k = 0\par
+\par
+        while i < len(left_half) and j < len(right_half):\par
+            if left_half[i] < right_half[j]:\par
+                lst[k] = left_half[i]\par
+                i += 1\par
+            else:\par
+                lst[k] = right_half[j]\par
+                j += 1\par
+            k += 1\par
+\par
+        while i < len(left_half):\par
+            lst[k] = left_half[i]\par
+            i += 1\par
+            k += 1\par
+\par
+        while j < len(right_half):\par
+            lst[k] = right_half[j]\par
+            j += 1\par
+            k += 1\par
+\par
+    return lst\par
+\par
+\par
+def insertion_sort(arr):\par
+    for i in range(1, len(arr)):\par
+        key = arr[i]\par
+        j = i - 1\par
+        while j >= 0 and key < arr[j]:\par
+            arr[j + 1] = arr[j]\par
+            j -= 1\par
+        arr[j + 1] = key\par
+\par
+my_list = []\par
+\par
+for i in range(10):\par
+    my_list.append(random.randint(0, 999))\par
+\par
+print("\\nUnsorted List")\par
+print(my_list)\par
+print("Sorting using Insertion Sort")\par
+insertion_sort(my_list)\par
+print(my_list)\par
+\par
+\par
+my_list = []\par
+\par
+for i in range(10):\par
+    my_list.append(random.randint(0, 999))\par
+\par
+print("\\nUnsorted List")\par
+print(my_list)\par
+print("Sorting using Merge Sort")\par
+merge_sort(my_list)\par
+print(my_list)\par
+Output\par
+Unsorted List\par
+[932, 111, 226, 685, 543, 589, 918, 539, 294, 717]\par
+Sorting using Insertion Sort\par
+[111, 226, 294, 539, 543, 589, 685, 717, 918, 932]\par
+\par
+Unsorted List\par
+[613, 176, 828, 265, 65, 326, 359, 919, 514, 868]\par
+Sorting using Merge Sort\par
+[65, 176, 265, 326, 359, 514, 613, 828, 868, 919]\par
+Roman to Integer Conversion\par
+Develop a Python program to check whether a given number is palindrome or not and also count the number of occurrences of each digit in the input number.\par
+\par
+Python Code\par
+#!/usr/bin/env python3\par
+# -*- coding: utf-8 -*-\par
+"""\par
+Created on Wed Feb 22 02:05:25 2023\par
+\par
+@author: Prabodh C P\par
+"""\par
+\par
+\par
+def roman2Dec(romStr):\par
+    roman_dict =\{'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000\}\par
+    # Analyze string backwards\par
+    romanBack = list(romStr)[::-1]\par
+    value = 0\par
+    # To keep track of order\par
+    rightVal = roman_dict[romanBack[0]]  \par
+    for numeral in romanBack:\par
+        leftVal = roman_dict[numeral]\par
+        # Check for subtraction\par
+        if leftVal < rightVal:\par
+           value -= leftVal\par
+        else:\par
+            value += leftVal\par
+        rightVal = leftVal\par
+    return value\par
+\par
+\par
+romanStr = input("Enter a Roman Number : ")\par
+print(roman2Dec(romanStr))\par
+Output\par
+Enter a Roman Number : XVII\par
+17\par
+\par
+Enter a Roman Number : MLXVI\par
+1066\par
+Question 5\par
+Check Phone Number\par
+Write a function called isphonenumber () to recognize a pattern 415-555-4242 without using regular expression and also write the code to recognize the same pattern using regular expression.\par
+\par
+Python Code\par
+#!/usr/bin/env python3\par
+# -*- coding: utf-8 -*-\par
+"""\par
+Created on Thu Mar  9 04:19:57 2023\par
+\par
+@author: Prabodh C P\par
+"""\par
+import re\par
+\par
+\par
+def isphonenumber(numStr):\par
+    if len(numStr) != 12:\par
+        return False\par
+    for i in range(len(numStr)):\par
+        if i==3 or i==7:\par
+            if numStr[i] != "-":\par
+                return False\par
+        else:\par
+            if numStr[i].isdigit() == False:\par
+                return False\par
+    return True\par
+\par
+\par
+def chkphonenumber(numStr):\par
+    ph_no_pattern = re.compile(r'^\\d\{3\}-\\d\{3\}-\\d\{4\}$')\par
+    if ph_no_pattern.match(numStr):\par
+        return True\par
+    else:\par
+        return False\par
+\par
+ph_num = input("Enter a phone number : ")\par
+print("Without using Regular Expression")\par
+if isphonenumber(ph_num):\par
+    print("Valid phone number")\par
+else:\par
+    print("Invalid phone number")\par
+\par
+print("Using Regular Expression")\par
+if chkphonenumber(ph_num):\par
+    print("Valid phone number")\par
+else:\par
+    print("Invalid phone number")\par
+Output\par
+Enter a phone number : 444-654-5656\par
+Without using Regular Expression\par
+Valid phone number\par
+Using Regular Expression\par
+Valid phone number\par
+Enter a phone number : 45A4-444-878\par
+Without using Regular Expression\par
+Invalid phone number\par
+Using Regular Expression\par
+Invalid phone number\par
+Search Phone Number & Email\par
+Develop a python program that could search the text in a file for phone numbers (+919900889977) and email addresses (sample@gmail.com)\par
+\par
+Python Code\par
+#!/usr/bin/env python3\par
+# -*- coding: utf-8 -*-\par
+"""\par
+Created on Thu Mar  9 04:40:10 2023\par
+\par
+@author: Prabodh C P\par
+"""\par
+\par
+import re\par
+\par
+# Define the regular expression for phone numbers\par
+phone_regex = re.compile(r'\\+\\d\{12\}')\par
+email_regex = re.compile(r'[A-Za-z0-9._]+@[A-Za-z0-9]+\\.[A-Z|a-z]\{2,\}')\par
+# Open the file for reading\par
+with open('example.txt', 'r') as f:\par
+    # Loop through each line in the file\par
+    for line in f:\par
+        # Search for phone numbers in the line\par
+        matches = phone_regex.findall(line)\par
+        # Print any matches found\par
+        for match in matches:\par
+            print(match)\par
+\par
+        matches = email_regex.findall(line)\par
+        # Print any matches found\par
+        for match in matches:\par
+            print(match)            \par
+Output\par
++918151894220\par
++829392938876\par
++918768456234\par
+prakash81.82@gmail.in\par
+Question 6\par
+File Operations\par
+Write a python program to accept a file name from the user and perform the following operations\par
+\par
+Display the first N line of the file\par
+Find the frequency of occurrence of the word accepted from the user in the file\par
+Python Code\par
+#!/usr/bin/env python3\par
+# -*- coding: utf-8 -*-\par
+"""\par
+Created on Thu Mar  9 05:26:33 2023\par
+\par
+@author: Prabodh C P\par
+"""\par
+\par
+import os.path\par
+import sys\par
+\par
+fname = input("Enter the filename : ")      \par
+\par
+if not os.path.isfile(fname):\par
+    print("File", fname, "doesn't exists")\par
+    sys.exit(0)\par
+\par
+infile = open(fname, "r")\par
+\par
+lineList = infile.readlines()\par
+\par
+for i in range(20):\par
+    print(i+1, ":", lineList[i])\par
+    \par
+word = input("Enter a word : ")\par
+cnt = 0\par
+for line in lineList:\par
+    cnt += line.count(word)\par
+\par
+print("The word", word, "appears", cnt, "times in the file")\par
+Output\par
+Enter the filename : example.txt\par
+1 : this is phone number +918151894220\par
+2 : no phone number here\par
+3 : here we have one +829392938876\par
+4 : we have an email prakash81.82@gmail.in and a number +918768456234 \par
+5 : nothing of that sort here\par
+6 : Better hope the life-inspector doesn't come around while you have your\par
+7 : life in such a mess.\par
+8 : You can create your own opportunities this week.  Blackmail a senior executive.\par
+9 : Be different: conform.\par
+10 : Be cheerful while you are alive.\par
+11 : \tab\tab -- Phathotep, 24th Century B.C.\par
+12 : Q:\tab How many journalists does it take to screw in a light bulb?\par
+13 : A:\tab Three.  One to report it as an inspired government program to bring\par
+14 : \tab light to the people, one to report it as a diabolical government plot\par
+15 : \tab to deprive the poor of darkness, and one to win a Pulitzer prize for\par
+16 : \tab reporting that Electric Company hired a light bulb-assassin to break\par
+17 : \tab the bulb in the first place.\par
+18 : Q:\tab Why did the astrophysicist order three hamburgers?\par
+19 : A:\tab Because he was hungry.\par
+20 : Q:\tab Why haven't you graduated yet?\par
+Enter a word : the\par
+The word the appears 7 times in the file\par
+Zip operation on a folder\par
+Develop a program to backing Up a given Folder (Folder in a current working directory) into a ZIP File by using relevant modules and suitable methods.\par
+\par
+Python Code\par
+#!/usr/bin/env python3\par
+# -*- coding: utf-8 -*-\par
+"""\par
+Created on Fri Dec 23 16:14:28 2022\par
+\par
+@author: Prabodh C P\par
+"""\par
+\par
+import os\par
+import sys\par
+import pathlib\par
+import zipfile\par
+\par
+dirName = input("Enter Directory name that you want to backup : ")\par
+\par
+if not os.path.isdir(dirName):\par
+    print("Directory", dirName, "doesn't exists")\par
+    sys.exit(0)\par
+    \par
+curDirectory = pathlib.Path(dirName)\par
+    \par
+with zipfile.ZipFile("myZip.zip", mode="w") as archive:\par
+    for file_path in curDirectory.rglob("*"):\par
+        archive.write(file_path, arcname=file_path.relative_to(curDirectory))\par
+    \par
+if os.path.isfile("myZip.zip"):\par
+    print("Archive", "myZip.zip", "created successfully")\par
+else:\par
+    print("Error in creating zip archive")\par
+Output\par
+Enter Directory name that you want to backup : zipDemo\par
+Archive myZip.zip created successfully\par
+Question 7\par
+Inheritance\par
+By using the concept of inheritance write a python program to find the area of triangle, circle and rectangle.\par
+\par
+Python Code\par
+#!/usr/bin/env python3\par
+# -*- coding: utf-8 -*-\par
+"""\par
+Created on Thu Mar  9 05:40:37 2023\par
+\par
+@author: Prabodh C P\par
+"""\par
+\par
+import math\par
+\par
+class Shape:\par
+    def __init__(self):\par
+        self.area = 0\par
+        self.name = ""\par
+        \par
+    def showArea(self):\par
+        print("The area of the", self.name, "is", self.area, "units")\par
+        \par
+class Circle(Shape):\par
+    def __init__(self,radius):\par
+        self.area = 0\par
+        self.name = "Circle"\par
+        self.radius = radius\par
+        \par
+    def calcArea(self):\par
+        self.area = math.pi * self.radius * self.radius\par
+    \par
+class Rectangle(Shape):\par
+    def __init__(self,length,breadth):\par
+        self.area = 0\par
+        self.name = "Rectangle"\par
+        self.length = length\par
+        self.breadth = breadth\par
+        \par
+    def calcArea(self):\par
+        self.area = self.length * self.breadth\par
+\par
+class Triangle(Shape):\par
+    def __init__(self,base,height):\par
+        self.area = 0\par
+        self.name = "Triangle"\par
+        self.base = base\par
+        self.height = height\par
+        \par
+    def calcArea(self):\par
+        self.area = self.base * self.height / 2\par
+    \par
+\par
+    \par
+c1 = Circle(5)\par
+c1.calcArea()\par
+c1.showArea()\par
+\par
+\par
+r1 = Rectangle(5, 4)\par
+r1.calcArea()\par
+r1.showArea()\par
+\par
+\par
+t1 = Triangle(3, 4)\par
+t1.calcArea()\par
+t1.showArea()\par
+Output\par
+The area of the Circle is 78.53981633974483 units\par
+The area of the Rectangle is 20 units\par
+The area of the Triangle is 6.0 units\par
+Employee Details\par
+Write a python program by creating a class called Employee to store the details of Name, Employee_ID, Department and Salary, and implement a method to update salary of employees belonging to a given department.\par
+\par
+Python Code\par
+#!/usr/bin/env python3\par
+# -*- coding: utf-8 -*-\par
+"""\par
+Created on Thu Mar  9 12:09:50 2023\par
+\par
+@author: Prabodh C P\par
+"""\par
+\par
+class Employee:\par
+    def __init__(self):\par
+        self.name = ""\par
+        self.empId = ""\par
+        self.dept = ""\par
+        self.salary = 0\par
+        \par
+    def getEmpDetails(self):\par
+        self.name = input("Enter Employee name : ")\par
+        self.empId = input("Enter Employee ID : ")\par
+        self.dept = input("Enter Employee Dept : ")\par
+        self.salary = int(input("Enter Employee Salary : "))\par
+        \par
+    def showEmpDetails(self):\par
+        print("Employee Details")\par
+        print("Name : ", self.name)\par
+        print("ID : ", self.empId)\par
+        print("Dept : ", self.dept)\par
+        print("Salary : ", self.salary)\par
+        \par
+    def updtSalary(self):\par
+        self.salary = int(input("Enter new Salary : "))\par
+        print("Updated Salary", self.salary)\par
+        \par
+\par
+e1 = Employee()\par
+e1.getEmpDetails()\par
+e1.showEmpDetails()\par
+e1.updtSalary()\par
+Output\par
+Enter Employee name : Sameer\par
+Enter Employee ID : A123\par
+Enter Employee Dept : CSE\par
+Enter Employee Salary : 85750\par
+\par
+Employee Details\par
+Name :  Sameer\par
+ID :  A123\par
+Dept :  CSE\par
+Salary :  85750\par
+\par
+Enter new Salary : 88800\par
+Updated Salary 88800\par
+Question 8\par
+Polymorphism and Inheritance\par
+Write a python program to find the whether the given input is palindrome or not (for both string and integer) using the concept of polymorphism and inheritance.\par
+\par
+Python Code\par
+#!/usr/bin/env python3\par
+# -*- coding: utf-8 -*-\par
+"""\par
+Created on Thu Mar  9 12:20:20 2023\par
+\par
+@author: Prabodh C P\par
+"""\par
+\par
+class PaliStr:\par
+    def __init__(self):\par
+        self.isPali = False\par
+        \par
+    def chkPalindrome(self, myStr):\par
+        if myStr == myStr[::-1]:\par
+            self.isPali = True\par
+        else:\par
+            self.isPali = False\par
+            \par
+        return self.isPali\par
+            \par
+class PaliInt(PaliStr):\par
+    def __init__(self):\par
+        self.isPali = False\par
+        \par
+    def chkPalindrome(self, val):\par
+        temp = val\par
+        rev = 0\par
+        while temp != 0:\par
+            dig = temp % 10\par
+            rev = (rev*10) + dig\par
+            temp = temp //10\par
+            \par
+        if val == rev:\par
+            self.isPali = True\par
+        else:\par
+            self.isPali = False\par
+        \par
+        return self.isPali\par
+\par
+st = input("Enter a string : ")\par
+\par
+stObj = PaliStr()\par
+if stObj.chkPalindrome(st):\par
+    print("Given string is a Palindrome")\par
+else:\par
+    print("Given string is not a Palindrome")\par
+\par
+val = int(input("Enter a integer : "))    \par
+\par
+intObj = PaliInt()\par
+if intObj.chkPalindrome(val):\par
+    print("Given integer is a Palindrome")\par
+else:\par
+    print("Given integer is not a Palindrome")\par
+Output\par
+Enter a string : madam\par
+Given string is a Palindrome\par
+Enter a integer : 567587\par
+Given integer is not a Palindrome\par
+}
+ 
